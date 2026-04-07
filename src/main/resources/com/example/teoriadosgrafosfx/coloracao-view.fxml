@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.teoriadosgrafosfx.ColoracaoController"
+            stylesheets="@style.css">
+
+    <!-- Cabeçalho -->
+    <top>
+        <VBox spacing="0" styleClass="header-container">
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="title-bar">
+                <padding>
+                    <Insets top="20" right="25" bottom="20" left="25"/>
+                </padding>
+                <Label text="🎨 Coloração de Grafos" styleClass="main-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="statusLabel" text="Pronto" styleClass="status-label"/>
+            </HBox>
+
+            <ToolBar styleClass="toolbar">
+                <Button text="📁 Abrir Arquivo" onAction="#abrirArquivo" styleClass="toolbar-button"/>
+                <Separator orientation="VERTICAL"/>
+                <Button text="▶ Executar Coloração" onAction="#executarColoracao" styleClass="toolbar-button-primary"/>
+                <Separator orientation="VERTICAL"/>
+                <Button text="🗑 Limpar Tudo" onAction="#limparTabela" styleClass="toolbar-button"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="fileInfoLabel" text="" styleClass="file-info"/>
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <!-- Conteúdo Principal -->
+    <center>
+        <SplitPane dividerPositions="0.35" styleClass="main-split">
+
+            <!-- Painel Esquerdo - Entrada -->
+            <VBox spacing="10" styleClass="left-panel">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+
+                <VBox spacing="5" styleClass="section-card">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="Matriz de Adjacência Carregada" styleClass="section-title"/>
+                    <TextArea fx:id="fileContentArea"
+                              editable="false"
+                              wrapText="true"
+                              styleClass="file-content-area"
+                              VBox.vgrow="ALWAYS">
+                    </TextArea>
+                </VBox>
+
+                <VBox spacing="8" styleClass="info-box">
+                    <padding>
+                        <Insets top="12" right="12" bottom="12" left="12"/>
+                    </padding>
+                    <Label text="ℹ Como usar:" styleClass="info-title"/>
+                    <Label text="1. Clique em 'Abrir Arquivo' para carregar uma matriz"
+                           wrapText="true" styleClass="info-text"/>
+                    <Label text="2. Clique em 'Executar Coloração' para processar"
+                           wrapText="true" styleClass="info-text"/>
+                    <Label text="3. Visualize os resultados à direita"
+                           wrapText="true" styleClass="info-text"/>
+                    <Separator/>
+                    <Label text="Algoritmo: Maior Grau Primeiro"
+                           wrapText="true" styleClass="info-text-small"/>
+                </VBox>
+            </VBox>
+
+            <!-- Painel Direito - Resultados -->
+            <VBox spacing="0" styleClass="right-panel">
+                <Label text="Resultados da Coloração" styleClass="results-title">
+                    <padding>
+                        <Insets top="15" right="15" bottom="10" left="15"/>
+                    </padding>
+                </Label>
+
+                <ScrollPane fitToWidth="true" styleClass="results-scroll" VBox.vgrow="ALWAYS">
+                    <VBox fx:id="resultsVBox" spacing="15" styleClass="results-container">
+                        <padding>
+                            <Insets top="10" right="15" bottom="15" left="15"/>
+                        </padding>
+
+                        <!-- Placeholder quando não há resultados -->
+                        <VBox alignment="CENTER" spacing="15" styleClass="empty-state">
+                            <padding>
+                                <Insets top="60" right="40" bottom="60" left="40"/>
+                            </padding>
+                            <Label text="📊" style="-fx-font-size: 48px;"/>
+                            <Label text="Nenhum resultado ainda" styleClass="empty-title"/>
+                            <Label text="Carregue um arquivo e execute a coloração para ver os resultados aqui"
+                                   wrapText="true" textAlignment="CENTER" styleClass="empty-subtitle"/>
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+            </VBox>
+
+        </SplitPane>
+    </center>
+
+    <!-- Rodapé -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="footer">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+            <Label text="Teoria dos Grafos - Algoritmo de Coloração" styleClass="footer-text"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="v1.0 | JavaFX" styleClass="footer-text"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.teoriadosgrafosfx.HelloController">
+    <top>
+        <VBox styleClass="header-section">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="title-bar">
+                    <children>
+                        <Label styleClass="app-title" text="Analisador de Pontos de Articulação" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="carregarBtn" mnemonicParsing="false" onAction="#carregarArquivo" styleClass="primary-button" text="📁 Carregar Arquivo" />
+                    </children>
+                </HBox>
+                <Separator />
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.4" orientation="HORIZONTAL">
+            <items>
+                <VBox styleClass="input-panel">
+                    <children>
+                        <Label styleClass="section-title" text="Conteúdo do Arquivo" />
+                        <TextArea fx:id="fileContentArea" prefHeight="400.0" promptText="Carregue um arquivo de matriz de adjacência..." styleClass="file-content" wrapText="true" />
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="info-bar">
+                            <children>
+                                <Label fx:id="fileInfoLabel" styleClass="info-text" text="Nenhum arquivo carregado" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label fx:id="statusLabel" styleClass="status-text" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <ScrollPane fitToWidth="true" styleClass="results-panel">
+                    <content>
+                        <VBox fx:id="resultsVBox" spacing="15.0" styleClass="results-container" />
+                    </content>
+                </ScrollPane>
+            </items>
+        </SplitPane>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="footer">
+            <children>
+                <Label styleClass="footer-text" text="Teoria dos Grafos - Detecção de Pontos de Articulação" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="versionLabel" styleClass="version-text" text="v1.0" />
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>
